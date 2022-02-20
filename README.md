@@ -21,7 +21,7 @@
 ## 📘 Description
 
 <div align="center">
----
+This will be my own project, the [imxnoobx.xyz](https://imxnoobx.xyz) will have a cool site + a rest api that im learning how to do
 </div>
         
 ## 🏠 [Homepage](https://github.com/IMXNOOBX/imxnoobx.xyz#readme)
