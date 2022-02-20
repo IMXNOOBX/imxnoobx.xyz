@@ -21,7 +21,7 @@
 ## 📘 Description
 
 <div align="center">
-Simple readme generator that will help you creating thoose amazing repositories
+---
 </div>
         
 ## 🏠 [Homepage](https://github.com/IMXNOOBX/imxnoobx.xyz#readme)
