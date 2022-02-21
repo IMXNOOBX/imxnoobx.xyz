@@ -2,10 +2,12 @@
 
 # Dependencies
 /node_modules
+./api/node_modules
 
 # Discord/Auths
 .env
 data.json
+*.rest
 
 # Builds
 /test
