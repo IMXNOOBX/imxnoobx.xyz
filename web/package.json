@@ -1,11 +1,8 @@
 {
   "name": "imxnoobx.xyz",
-  "version": "1.0.2",
-  "description": "My personal project imxnoobx.xyz - api",
+  "version": "1.0.0",
+  "description": "My personal project imxnoobx.xyz - web",
   "main": "./index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
     "dev": "nodemon ./index.js",
     "main": "node ./index.js"
@@ -21,9 +18,8 @@
   },
   "homepage": "https://github.com/IMXNOOBX/imxnoobx.xyz#readme",
   "dependencies": {
-    "axios": "^0.26.0",
-    "dotenv": "^16.0.0",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "fs": "^0.0.1-security"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

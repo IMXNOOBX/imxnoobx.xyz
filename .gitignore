@@ -2,8 +2,8 @@
 
 # Dependencies
 /node_modules
-./api/node_modules
-
+/api/node_modules
+/web/node_modules
 # Discord/Auths
 .env
 data.json
