@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 Where are we... - imxnoobx.xyz</title>
+    <!-- <link rel="stylesheet" href="css/404.css"> -->
+  </head>
+  <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+      -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+          -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+    }
+
+    /* Flashlight Overlay */
+    :root {
+      cursor: none;
+      --cursorX: 50vw;
+      --cursorY: 50vh;
+    }
+    :root:before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      pointer-events: none;
+      background: radial-gradient(
+        circle 10vmax at var(--cursorX) var(--cursorY),
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.5) 60%,
+        rgba(0, 0, 0, 0.95) 100%
+      );
+    }
+
+    h1 {
+      position: absolute;
+      top: 30%;
+      left: 45%;
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 8em;
+      color: rgb(13, 13, 13);
+    }
+
+    h2 {
+      position: absolute;
+      top: 45%;
+      left: 26%;
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 5em;
+      color: rgb(13, 13, 13);
+    }
+  </style>
+  <body>
+    <h1>404</h1>
+    <h2>Lost in the infinite space</h2>
+    <script>
+      function update(e) {
+        var x = e.clientX || e.touches[0].clientX;
+        var y = e.clientY || e.touches[0].clientY;
+
+        document.documentElement.style.setProperty("--cursorX", x + "px");
+        document.documentElement.style.setProperty("--cursorY", y + "px");
+      }
+
+      document.addEventListener("mousemove", update);
+      document.addEventListener("touchmove", update);
+    </script>
+  </body>
+</html>

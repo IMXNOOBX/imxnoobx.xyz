@@ -43,7 +43,8 @@ app.get('/discord/user/:userid', async (req, res) => {
                 });
             } else {
                 return res.status(500).send({
-                    message: `Discord rejected the request please try again later!. Check https://docs.imxnoobx.xyz`
+                    message: `Discord rejected the request please try again later!. Check https://docs.imxnoobx.xyz`,
+                    err: error
                 });
             }
 
@@ -70,18 +71,42 @@ app.get('/discord/server/:serverid', async (req, res) => {
             console.log(error);
             if (error.response.status == 403) {
                 return res.status(403).send({
-                    message: `Discord server widget disabled!. Check https://docs.imxnoobx.xyz`
-                });
+                    message: `Discord server widget disabled!. Check https://docs.imxnoobx.xyz`                });
             } else if (error.response.status == 404) {
                 return res.status(404).send({
-                    message: `Server not found, Check the server id. Check https://docs.imxnoobx.xyz`
-                });
+                    message: `Server not found, Check the server id. Check https://docs.imxnoobx.xyz`                });
             } else {
                 return res.status(500).send({
-                    message: `Discord rejected the request!. Check https://docs.imxnoobx.xyz`
+                    message: `Discord rejected the request!. Check https://docs.imxnoobx.xyz`,
+                    err: error
                 });
             }
         });
+})
+
+app.post('/scamlink', async (req, res) => {
+    // console.log(req.body)
+    if(!req.body || !req.body.link) {
+        return res.status(400).send({
+            message: `Invalid json post request, Check https://docs.imxnoobx.xyz`
+        });
+    }
+
+    let iurl = req.body.link;
+    axios.get('https://github.com/DevSpen/scam-links/raw/master/src/links.txt').then(e => {
+        let r = e.data;
+        const result = r.includes(iurl)
+        res.status(200).send({
+            link: iurl,
+            result: result
+        });   
+        // console.log(result)   
+    }).catch(function (error) {
+        return res.status(500).send({
+            message: `GitHub rejected the request!. Check https://docs.imxnoobx.xyz`,
+            err: error
+        });
+    });
 })
 
 app.listen(80, () => {
