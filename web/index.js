@@ -4,12 +4,16 @@ const fs = require('fs')
 
 const app = express()
 app.use(express.json())
-app.use(express.static(`${__dirname}/html`))
+// app.use(express.static(`${__dirname}/html`))
 const abs = path.join(`${__dirname}/html`)
 
 
 app.get('/',function(req,res) {
-    res.sendFile(`/index.html`);
+    res.sendFile(`${abs}/index.html`);
+});
+
+app.get('/login',function(req,res) {
+    res.sendFile(`${abs}/login.html`);
 });
 
 app.use(function(req, res, next) {
@@ -17,5 +21,5 @@ app.use(function(req, res, next) {
 });
 
 app.listen(80, () => {
-    console.log('listening on port 80')
+    console.log('Watching http://localhost:80')
 })
