@@ -1,19 +1,22 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
-import Main from './components/Main';
-import Test from './components/Test';
-import NotFoundError from './components/404';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+// Pages 
+import Main from './pages';
+import Test from './pages/Test';
+import NotFoundError from './pages/404';
 
 function App() {
   return (
-    <div className="App">
-      <Route exact path="/" component={Main}/>
-      <Route exact path="/test" component={Test}/>
-      <Route component={NotFoundError}/>
-      {/* <Main />
-      <Test /> */}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Main />} />
+        <Route exact path="/test" element={<Test />} />
+        <Route path="/404" element={<NotFoundError />} />
+        <Route path="*" element={<Navigate to ="/404" />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
+// https://reactrouter.com/docs/en/v6/getting-started/overview
