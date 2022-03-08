@@ -1,0 +1,40 @@
+site_name:  IMXNOOBX
+extra_css:
+  - stylesheets/extra.css
+theme:
+  name: material
+  language: en
+  logo: assets/logo.png
+  favicon: assets/favicon64.png
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      primary: red
+      accent: indigo
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: light)"
+      primary: indigo
+      accent: green
+      scheme: default 
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.top
+    - navigation.instant
+    - search.highlight
+    - search.share
+extra:
+  homepage: https://docs.imxnoobx.xyz
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/imxnoobx
+      name: IMXNOOBX on Twitter
+    - icon: fontawesome/brands/github
+      link: https://github.com/IMXNOOBX
+      name: IMXNOOBX on GitHub
+copyright: Copyright &copy; 2021 - 2022 IMXNOOBX
