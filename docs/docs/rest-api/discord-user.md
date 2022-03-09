@@ -1,18 +1,33 @@
 # Discord User
 
+Get information about a discord user!
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+## Request. GET
 
-## Commands
+* GET http://localhost:80/discord/user/652969127756955658
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+```js
+axios.get('https://api.imxnoobx.xyz/discord/user/652969127756955658')
+    .then(e => {
+        let r = e.data;
+        console.log(r) //Output
+    })
+```
 
-## Project layout
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+## Output. JSON
+
+* Output example
+
+```json
+{
+  "id": "652969127756955658",
+  "username": "жnoobж",
+  "avatar": "048439e08f1b7bc1c11bc7587e5df4f2",
+  "discriminator": "6228",
+  "public_flags": 128,
+  "banner": null,
+  "banner_color": "#18191C",
+  "accent_color": 1579292
+}
+```

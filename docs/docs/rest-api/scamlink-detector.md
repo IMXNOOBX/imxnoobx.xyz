@@ -3,16 +3,31 @@
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
-## Commands
+## Request. POST
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+* POST http://localhost:80/discord/user/652969127756955658
+Content-Type: application/json
+{
+    "link": "gift-nitro.events"
+}
 
-## Project layout
+```js
+axios.post('/scamlink', {
+  'Content-Type': 'application/json',
+    data: {
+        "link": "gift-nitro.events"
+    }
+})
+    .then(e => {
+        let r = e.data;
+        console.log(r) //Output
+    })
+```
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+## Output. JSON
+
+* Output example
+
+```json
+
+```

@@ -1,18 +1,46 @@
 # Discord Server
 
+Get information about a discord server!
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+## Request. GET
 
-## Commands
+* GET http://localhost:80/discord/server/000078108977594368
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+```js
+axios.get('https://api.imxnoobx.xyz/discord/server/000078108977594368')
+    .then(e => {
+        let r = e.data;
+        console.log(r) //Output
+    })
+```
 
-## Project layout
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+## Output. JSON
+
+* Output example
+
+```json
+{
+  "id": "000078108977594368", // Server ID
+  "name": "Discord Server",
+  "instant_invite": null,
+  "channels": [
+    {
+      "id": "000000000000000", // Channel ID
+      "name": "Discord Channel",
+      "position": 8
+    }
+  ],
+  "members": [
+    {
+      "id": "0", // Server Position ID, Not User ID
+      "username": "Wumpus",
+      "discriminator": "0000",
+      "avatar": null,
+      "status": "dnd",
+      "avatar_url": "https://cdn.discordapp.com/widget-avatars/XXXXXXXXXXX"
+    }
+  ],
+  "presence_count": 465 // Amount of users online
+}
+```
