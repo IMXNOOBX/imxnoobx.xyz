@@ -1,18 +1,39 @@
 # Steam User
 
+Get information about a steam user!
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+## Request. GET
 
-## Commands
+* GET http://localhost:80/steam/user/76561199027322487
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+```js
+axios.get('https://api.imxnoobx.xyz/steam/user/76561199027322487')
+    .then(e => {
+        let r = e.data;
+        console.log(r) //Output
+    })
+```
 
-## Project layout
+## Output. JSON
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+* Output example
+
+```json
+{
+  "steamid": "76561199027322487",
+  "communityvisibilitystate": 3,
+  "profilestate": 1,
+  "personaname": "жnoobж",
+  "commentpermission": 1,
+  "profileurl": "https://steamcommunity.com/id/IMXNOOBX/",
+  "avatar": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/42/425bc5550f6635c7e5a024adcf482c7bfbe9909a.jpg",
+  "avatarmedium": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/42/425bc5550f6635c7e5a024adcf482c7bfbe9909a_medium.jpg",
+  "avatarfull": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/42/425bc5550f6635c7e5a024adcf482c7bfbe9909a_full.jpg",
+  "avatarhash": "425bc5550f6635c7e5a024adcf482c7bfbe9909a",
+  "personastate": 0,
+  "primaryclanid": "103582791470608762",
+  "timecreated": 1581766944,
+  "personastateflags": 0,
+  "loccountrycode": "ES"
+}
+```
