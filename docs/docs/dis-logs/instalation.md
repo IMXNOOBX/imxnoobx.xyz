@@ -1,4 +1,4 @@
-# Instalation
+# :material-download: Instalation
 
 ## Download the package 
 
@@ -16,8 +16,11 @@ const { Webhook } = require('dis-logs')
 ## Set Up Your Own Webhook 
 
 ```js
-const logger = new Webhook('YOUR_WEBHOOK_URL') 
+const logger = new Webhook('YOUR_WEBHOOK_URL') // (1)
 ```
+
+1. Check how you can get your own discord webhook [here](https://www.youtube.com/watch?v=fKksxz2Gdnc)
+
 
 ## Customize your webhook 
 
@@ -32,11 +35,14 @@ logger.setName('WEBHOOK_NAME')
 
 ### Webhook Icon
 
-You can create a webhook icon by generating a image with [onlinejpgtools.com](​https://onlinejpgtools.com/convert-jpg-to-base64) to base64 converter
+You can create a webhook icon by generating a image with <a href="https://onlinejpgtools.com/convert-jpg-to-base64">onlinejpgtools.com</a> to base64 converter
 
-```js
-logger.setAV('STRING_BASE64')
+```js 
+logger.setAV('STRING_BASE64') // (1)
 ```
+
+1.  You can create a webhook icon by generating a image with <a href="https://onlinejpgtools.com/convert-jpg-to-base64">onlinejpgtools.com</a> to base64 converter
+
 <center>
 <img src="https://media.discordapp.net/attachments/905017554794332201/951106889217867886/unknown.png" alt="WEBHOOK IMAGE IMAGE" />
 </center>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import NavBar from "../components/NavBar";
 import SideBar from "../components/SideBar";
+import Footer from "../components/Footer";
 
 function Main() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +15,7 @@ function Main() {
       <SideBar isOpen={isOpen} toggle={toggle} />
       <NavBar toggle={toggle}/>
       <h1>Hello World!</h1>
+      <Footer/>
     </div>
   );
 }

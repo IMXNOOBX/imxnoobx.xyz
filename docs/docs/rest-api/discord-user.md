@@ -1,10 +1,10 @@
-# Discord User
+# :fontawesome-brands-discord: Discord User
 
 Get information about a discord user!
 
 ## Request. GET
 
-* GET http://localhost:80/discord/user/652969127756955658
+* GET http://api.imxnoobx.xyz/discord/user/652969127756955658
 
 ```js
 axios.get('https://api.imxnoobx.xyz/discord/user/652969127756955658')
