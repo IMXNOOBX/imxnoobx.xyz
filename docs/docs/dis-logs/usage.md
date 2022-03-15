@@ -1,4 +1,4 @@
-# Usage
+# :material-cursor-default-gesture: Usage
 
 ## Log Events
 

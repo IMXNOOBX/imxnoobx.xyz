@@ -1,9 +1,26 @@
 const express = require('express')
 const auth = require('dotenv').config()
 const axios = require('axios').default;
+const rateLimit = require('express-rate-limit')
+const { lookup } = require('geoip-lite');
 
 const app = express()
 app.use(express.json())
+
+const limiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	max: 10, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+    handler: function (req, res, ) {
+        return res.status(429).json({
+          error: 'You sent too many requests. Please wait a while then try again'
+        })
+    }
+})
+
+app.use(limiter)
+
 const djs_instance = axios.create({
     baseURL: 'https://discordapp.com/api/v9/',
     headers: {
@@ -53,7 +70,7 @@ app.get('/discord/user/:userid', async (req, res) => {
             } else {
                 return res.status(500).send({
                     message: `Discord rejected the request please try again later!. Check https://docs.imxnoobx.xyz`,
-                    err: error
+                    err: error.message
                 });
             }
 
@@ -87,7 +104,7 @@ app.get('/discord/server/:serverid', async (req, res) => {
             } else {
                 return res.status(500).send({
                     message: `Discord rejected the request!. Check https://docs.imxnoobx.xyz`,
-                    err: error
+                    err: error.message
                 });
             }
         });
@@ -149,6 +166,23 @@ app.get('/steam/user/:steamid', async (req, res) => {
             }
 
         });
+})
+
+app.get('/ip', async (req, res) => {
+    console.log('Request received at endpoint: ' + req.path)
+    var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
+    ip = ip.split(`:`).pop(); // ip = ::ffff:10.10.10.10
+    // console.log(ip) // ip = 10.10.10.10
+    if (!ip) {
+        return res.status(404).send({
+            message: `Cound't determine your ip. Please Check https://docs.imxnoobx.xyz`
+        });
+    }
+    let ipd = lookup(ip);
+    res.status(200).send({
+        ipd
+    });
+
 })
 
 app.listen(80, () => {

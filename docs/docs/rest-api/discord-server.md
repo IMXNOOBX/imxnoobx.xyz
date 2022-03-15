@@ -1,10 +1,10 @@
-# Discord Server
+# :material-discord: Discord Server
 
 Get information about a discord server!
 
 ## Request. GET
 
-* GET http://localhost:80/discord/server/000078108977594368
+* GET http://api.imxnoobx.xyz/discord/server/000078108977594368
 
 ```js
 axios.get('https://api.imxnoobx.xyz/discord/server/000078108977594368')

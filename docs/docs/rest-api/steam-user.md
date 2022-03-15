@@ -1,10 +1,10 @@
-# Steam User
+# :material-steam: Steam User
 
 Get information about a steam user!
 
 ## Request. GET
 
-* GET http://localhost:80/steam/user/76561199027322487
+* GET http://api.imxnoobx.xyz/steam/user/76561199027322487
 
 ```js
 axios.get('https://api.imxnoobx.xyz/steam/user/76561199027322487')

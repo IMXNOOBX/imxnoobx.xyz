@@ -1,21 +1,25 @@
-# Scamlink Detector
+# :material-server-security: Scamlink Detector
 
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Check if the link has been blacklisted as scamlink.
 
 ## Request. POST
 
-* POST http://localhost:80/discord/user/652969127756955658
-Content-Type: application/json
-{
-    "link": "gift-nitro.events"
-}
+* POST http://api.imxnoobx.xyz/discord/user/652969127756955658
+
+    Content-Type: application/json
+
+    {
+
+        "link": "gift-nitro.events"
+
+    }
 
 ```js
-axios.post('/scamlink', {
+axios.post('https://api.imxnoobx.xyz/scamlink', {
   'Content-Type': 'application/json',
     data: {
-        "link": "gift-nitro.events"
+        "link": "scamlink.scam"
     }
 })
     .then(e => {
@@ -28,6 +32,20 @@ axios.post('/scamlink', {
 
 * Output example
 
-```json
+=== "Scam Link Detected"
 
-```
+    ```json
+    {
+      "link": "scamlink.scam",
+      "result": true
+    }
+    ```
+
+=== "Scam Link Not Detected"
+
+    ```json
+    {
+      "link": "scamlink.scam",
+      "result": false
+    }
+    ```
