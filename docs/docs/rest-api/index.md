@@ -1,4 +1,4 @@
-# Rest Api Usage
+# :material-robot: Rest Api Usage (Under Development)
 
 
 
@@ -17,7 +17,7 @@
 
 | Method      | Endpoint                             | Response          | Status           |
 | ----------- | ------------------------------------ |------------------ |----------------- |
-| `GET`       | `/discord/user/%{userid}`            | JSON              | :material-check: |
-| `GET`       | `/discord/server/%{serverid}`        | JSON              | :material-check: |
-| `GET`       | `/steam/user/%{steamid}`             | JSON              | :material-check: |
-| `POST`      | `/scamlink`                          | JSON              | :material-check: |
+| `GET`       | `/discord/user/%{userid}`            | JSON              | :material-close: |
+| `GET`       | `/discord/server/%{serverid}`        | JSON              | :material-close: |
+| `GET`       | `/steam/user/%{steamid}`             | JSON              | :material-close: |
+| `POST`      | `/scamlink`                          | JSON              | :material-close: |

@@ -1,5 +1,3 @@
-# Credits
+# :material-source-branch: Credits
 
-
-
-//https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search
+[Mkdocs Material Dev](https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search)

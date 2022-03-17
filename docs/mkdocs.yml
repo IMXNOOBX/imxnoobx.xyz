@@ -48,7 +48,7 @@ nav:
   - Welcome: 
       - Welcome: 'index.md'
       - Contribute: 'contribute.md'
-      - Credits: 'credits.md'
+      # - Credits: 'credits.md'
   - 'Rest API':
       - 'Restfull API': 'rest-api\index.md'
       - 'Discord Users': 'rest-api\discord-user.md'
