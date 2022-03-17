@@ -2,6 +2,6 @@
 
 Do you saw any error or anything that you think you could do better?
 
-## How can i contribute?
+## How can you contribute?
 
-Open a pull request in this repository!
+Open a pull request in this repository! [**:material-source-pull:**](https://github.com/IMXNOOBX/imxnoobx.xyz/)
