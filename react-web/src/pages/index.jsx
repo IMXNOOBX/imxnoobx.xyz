@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import NavBar from "../components/NavBar";
 import SideBar from "../components/SideBar";
 import Footer from "../components/Footer";
+import {
+  SMain,
+  Background,
+  H1Title
+} from './IndexElements';
 
 function Main() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +19,11 @@ function Main() {
     <div>
       <SideBar isOpen={isOpen} toggle={toggle} />
       <NavBar toggle={toggle}/>
-      <h1>Hello World!</h1>
+
+      <SMain>
+        <H1Title>Hello World!</H1Title>
+      </SMain>
+      
       <Footer/>
     </div>
   );
