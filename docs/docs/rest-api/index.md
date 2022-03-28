@@ -1,4 +1,4 @@
-# :material-robot: Rest Api Usage (Under Development)
+# :material-robot: Rest Api Usage (Beta Testing)
 
 
 
@@ -15,9 +15,10 @@
 
 ## Api
 
-| Method      | Endpoint                             | Response          | Status           |
-| ----------- | ------------------------------------ |------------------ |----------------- |
-| `GET`       | `/discord/user/%{userid}`            | JSON              | :material-close: |
-| `GET`       | `/discord/server/%{serverid}`        | JSON              | :material-close: |
-| `GET`       | `/steam/user/%{steamid}`             | JSON              | :material-close: |
-| `POST`      | `/scamlink`                          | JSON              | :material-close: |
+| Method      | Endpoint                             | Response          | Status                        |
+| ----------- | ------------------------------------ |------------------ |------------------------------ |
+| `GET`       | `/discord/user/%{userid}`            | JSON              | :material-check-all:          |
+| `GET`       | `/discord/server/%{serverid}`        | JSON              | :material-check:              |
+| `GET`       | `/steam/user/%{steamid}`             | JSON              | :material-check-all:          |
+| `POST`      | `/scamlink`                          | JSON              | :material-check-all:          |
+| `GET`       | `/ip`                                | JSON              | :material-alert-circle-check: |

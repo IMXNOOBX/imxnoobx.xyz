@@ -80,3 +80,5 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - attr_list
   - md_in_html
+  - admonition
+  - pymdownx.details

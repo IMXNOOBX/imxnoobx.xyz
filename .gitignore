@@ -4,6 +4,7 @@
 /node_modules
 /api/node_modules
 /web/node_modules
+/site
 # Discord/Auths
 .env
 data.json

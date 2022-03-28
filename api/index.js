@@ -9,10 +9,10 @@ app.use(express.json())
 
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
-	max: 10, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+	max: 100, // Limit each IP to 100 requests per `window` (here, 15 minutes)
 	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-    handler: function (req, res, ) {
+    handler: function (req, res) {
         return res.status(429).json({
           error: 'You sent too many requests. Please wait a while then try again'
         })
@@ -43,7 +43,15 @@ const steam_instance = axios.create({
 });
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send({
+        message: 'Check the full documentation at https://docs.imxnoobx.xyz/rest-api/',
+        endpoints: {
+            'GET /discord/user/:userid': 'Get discord user info',
+            'GET /discord/server/:serverid': 'Get discord server info',
+            'POST /scamlink': 'Check if the provided url in "link" json parameter is a scam link',
+            'GET /steam/user/:steamid': 'Get steam user info',
+        }
+    })
 })
 
 app.get('/discord/user/:userid', async (req, res) => {
@@ -51,11 +59,11 @@ app.get('/discord/user/:userid', async (req, res) => {
     let par = req.params
     if (!par.userid) {
         return res.status(404).send({
-            message: `No user id parameter found. Check https://docs.imxnoobx.xyz`
+            message: `No user id parameter found. Check http://docs.imxnoobx.xyz/rest-api/handle-errors/#404-not-found`
         });
     } else if (isNaN(par.userid)) {
         return res.status(406).send({
-            message: `The user id parameter must be a number (integer). Check https://docs.imxnoobx.xyz`
+            message: `The user id parameter must be a number (integer). Check https://docs.imxnoobx.xyz/rest-api/handle-errors/#406-not-acceptable`
         });
     }
 
@@ -65,11 +73,11 @@ app.get('/discord/user/:userid', async (req, res) => {
         }).catch(function (error) {
             if (error.response.status == 404) {
                 return res.status(404).send({
-                    message: `User not found, Check the user id. Check https://docs.imxnoobx.xyz`
+                    message: `User not found, Check the user id. Check http://docs.imxnoobx.xyz/rest-api/handle-errors/#404-not-found`
                 });
             } else {
                 return res.status(500).send({
-                    message: `Discord rejected the request please try again later!. Check https://docs.imxnoobx.xyz`,
+                    message: `Discord rejected the request please try again later!. Check https://docs.imxnoobx.xyz/rest-api/handle-errors/#500-internal-server-error`,
                     err: error.message
                 });
             }
@@ -82,11 +90,11 @@ app.get('/discord/server/:serverid', async (req, res) => {
     let sv = req.params.serverid
     if (!sv) {
         return res.status(404).send({
-            message: `No server id parameter found. Check https://docs.imxnoobx.xyz`
+            message: `No server id parameter found. Check http://docs.imxnoobx.xyz/rest-api/handle-errors/#404-not-found`
         });
     } else if (isNaN(sv)) {
         return res.status(406).send({
-            message: `The server id parameter must be a number (integer). Check https://docs.imxnoobx.xyz`
+            message: `The server id parameter must be a number (integer). Check https://docs.imxnoobx.xyz/rest-api/handle-errors/#406-not-acceptable`
         });
     }
 
@@ -97,13 +105,13 @@ app.get('/discord/server/:serverid', async (req, res) => {
             // console.log(error);
             if (error.response.status == 403) {
                 return res.status(403).send({
-                    message: `Discord server widget disabled!. Check https://docs.imxnoobx.xyz`                });
+                    message: `Discord server widget disabled!. Check https://docs.imxnoobx.xyz/rest-api/`                });
             } else if (error.response.status == 404) {
                 return res.status(404).send({
-                    message: `Server not found, Check the server id. Check https://docs.imxnoobx.xyz`                });
+                    message: `Server not found, Check the server id. Check http://docs.imxnoobx.xyz/rest-api/handle-errors/#404-not-found`                });
             } else {
                 return res.status(500).send({
-                    message: `Discord rejected the request!. Check https://docs.imxnoobx.xyz`,
+                    message: `Discord rejected the request!. Check https://docs.imxnoobx.xyz/rest-api/handle-errors/#500-internal-server-error`,
                     err: error.message
                 });
             }
@@ -114,7 +122,7 @@ app.post('/scamlink', async (req, res) => {
     // console.log(req.body)
     if(!req.body || !req.body.link) {
         return res.status(400).send({
-            message: `Invalid json post request, Check https://docs.imxnoobx.xyz`
+            message: `Invalid json post request, Check https://docs.imxnoobx.xyz/rest-api/`
         });
     }
 
@@ -129,7 +137,7 @@ app.post('/scamlink', async (req, res) => {
         // console.log(result)   
     }).catch(function (error) {
         return res.status(500).send({
-            message: `GitHub rejected the request!. Check https://docs.imxnoobx.xyz`,
+            message: `GitHub rejected the request!. Check https://docs.imxnoobx.xyz/rest-api/handle-errors/#500-internal-server-error`,
             err: error
         });
     });
@@ -141,11 +149,11 @@ app.get('/steam/user/:steamid', async (req, res) => {
     let par = req.params
     if (!par.steamid) {
         return res.status(404).send({
-            message: `No user id parameter found. Check https://docs.imxnoobx.xyz`
+            message: `No user id parameter found. Check http://docs.imxnoobx.xyz/rest-api/handle-errors/#404-not-found`
         });
     } else if (isNaN(par.steamid)) {
         return res.status(406).send({
-            message: `The user id parameter must be a number (integer). Check https://docs.imxnoobx.xyz`
+            message: `The user id parameter must be a number (integer). Check https://docs.imxnoobx.xyz/rest-api/handle-errors/#406-not-acceptable`
         });
     }
 
@@ -156,11 +164,11 @@ app.get('/steam/user/:steamid', async (req, res) => {
             console.log(error);
             if (error.response.status == 404) {
                 return res.status(404).send({
-                    message: `User not found, Check the user id. Check https://docs.imxnoobx.xyz`
+                    message: `User not found, Check the user id. Check http://docs.imxnoobx.xyz/rest-api/handle-errors/#404-not-found`
                 });
             } else {
                 return res.status(500).send({
-                    message: `Steam rejected the request please try again later!. Check https://docs.imxnoobx.xyz`,
+                    message: `Steam rejected the request please try again later!. Check https://docs.imxnoobx.xyz/rest-api/handle-errors/#500-internal-server-error`,
                     err: error
                 });
             }
@@ -175,7 +183,7 @@ app.get('/ip', async (req, res) => {
     // console.log(ip) // ip = 10.10.10.10
     if (!ip) {
         return res.status(404).send({
-            message: `Cound't determine your ip. Please Check https://docs.imxnoobx.xyz`
+            message: `Cound't determine your ip. Please Check http://docs.imxnoobx.xyz/rest-api/handle-errors/#404-not-found`
         });
     }
     let ipd = lookup(ip);
