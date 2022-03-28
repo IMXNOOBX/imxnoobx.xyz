@@ -55,7 +55,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/discord/user/:userid', async (req, res) => {
-    console.log('Request received at endpoint: ' + req.path)
+    // console.log(' [debug] - Request received at endpoint: ' + req.path)
     let par = req.params
     if (!par.userid) {
         return res.status(404).send({
@@ -86,7 +86,7 @@ app.get('/discord/user/:userid', async (req, res) => {
 })
 
 app.get('/discord/server/:serverid', async (req, res) => {
-    console.log('Request received at endpoint: ' + req.path)
+    // console.log(' [debug] - Request received at endpoint: ' + req.path)
     let sv = req.params.serverid
     if (!sv) {
         return res.status(404).send({
@@ -145,7 +145,7 @@ app.post('/scamlink', async (req, res) => {
 
 
 app.get('/steam/user/:steamid', async (req, res) => {
-    console.log('Request received at endpoint: ' + req.path)
+    // console.log(' [debug] - Request received at endpoint: ' + req.path)
     let par = req.params
     if (!par.steamid) {
         return res.status(404).send({
@@ -161,7 +161,7 @@ app.get('/steam/user/:steamid', async (req, res) => {
         .then(function (response) {
             res.status(200).send(response.data.response.players[0]);
         }).catch(function (error) {
-            console.log(error);
+            // console.log(error);
             if (error.response.status == 404) {
                 return res.status(404).send({
                     message: `User not found, Check the user id. Check http://docs.imxnoobx.xyz/rest-api/handle-errors/#404-not-found`
@@ -177,7 +177,7 @@ app.get('/steam/user/:steamid', async (req, res) => {
 })
 
 app.get('/ip', async (req, res) => {
-    console.log('Request received at endpoint: ' + req.path)
+    // console.log(' [debug] - Request received at endpoint: ' + req.path)
     var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
     ip = ip.split(`:`).pop(); // ip = ::ffff:10.10.10.10
     // console.log(ip) // ip = 10.10.10.10
@@ -187,13 +187,16 @@ app.get('/ip', async (req, res) => {
         });
     }
     let ipd = lookup(ip);
-    res.status(200).send({
-        ipd
-    });
+    if (!ipd) {
+        return res.status(404).send({
+            message: `Cound't determine your ip. Please Check http://docs.imxnoobx.xyz/rest-api/handle-errors/#404-not-found`
+        });
+    }
+    res.status(200).send(ipd);
 
 })
 
 app.listen(80, () => {
-    console.log('listening on port 80')
+    console.log('[debug] - listening on port 80')
 })
 // https://developer.mozilla.org/es/docs/Web/HTTP/Status
