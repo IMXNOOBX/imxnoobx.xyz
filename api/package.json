@@ -1,6 +1,6 @@
 {
   "name": "imxnoobx.xyz",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "My personal project imxnoobx.xyz - api",
   "main": "./index.js",
   "directories": {
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/IMXNOOBX/imxnoobx.xyz#readme",
   "dependencies": {
     "axios": "^0.26.0",
+    "dis-logs": "^1.2.7",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-rate-limit": "^6.3.0",

@@ -1,8 +1,11 @@
 const express = require('express')
+const {Webhook} = require('dis-logs')
 const auth = require('dotenv').config()
 const axios = require('axios').default;
 const rateLimit = require('express-rate-limit')
 const { lookup } = require('geoip-lite');
+
+const log = new Webhook(process.env.DIS_LOGS_WEBHOOK)
 
 const app = express()
 app.use(express.json())
@@ -55,7 +58,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/discord/user/:userid', async (req, res) => {
-    // console.log(' [debug] - Request received at endpoint: ' + req.path)
+    log.console('[debug] - Request received at endpoint: ' + req.path)
     let par = req.params
     if (!par.userid) {
         return res.status(404).send({
@@ -86,7 +89,7 @@ app.get('/discord/user/:userid', async (req, res) => {
 })
 
 app.get('/discord/server/:serverid', async (req, res) => {
-    // console.log(' [debug] - Request received at endpoint: ' + req.path)
+    log.console('[debug] - Request received at endpoint: ' + req.path)
     let sv = req.params.serverid
     if (!sv) {
         return res.status(404).send({
@@ -102,7 +105,7 @@ app.get('/discord/server/:serverid', async (req, res) => {
         .then(function (response) {
             res.status(200).send(response.data);
         }).catch(function (error) {
-            // console.log(error);
+            log.console(error);
             if (error.response.status == 403) {
                 return res.status(403).send({
                     message: `Discord server widget disabled!. Check https://docs.imxnoobx.xyz/rest-api/`                });
@@ -119,7 +122,7 @@ app.get('/discord/server/:serverid', async (req, res) => {
 })
 
 app.post('/scamlink', async (req, res) => {
-    // console.log(req.body)
+    log.console(req.body)
     if(!req.body || !req.body.link) {
         return res.status(400).send({
             message: `Invalid json post request, Check https://docs.imxnoobx.xyz/rest-api/`
@@ -134,7 +137,7 @@ app.post('/scamlink', async (req, res) => {
             link: iurl,
             result: result
         });   
-        // console.log(result)   
+        log.console(result)   
     }).catch(function (error) {
         return res.status(500).send({
             message: `GitHub rejected the request!. Check https://docs.imxnoobx.xyz/rest-api/handle-errors/#500-internal-server-error`,
@@ -145,7 +148,7 @@ app.post('/scamlink', async (req, res) => {
 
 
 app.get('/steam/user/:steamid', async (req, res) => {
-    // console.log(' [debug] - Request received at endpoint: ' + req.path)
+    log.console('[debug] - Request received at endpoint: ' + req.path)
     let par = req.params
     if (!par.steamid) {
         return res.status(404).send({
@@ -161,7 +164,7 @@ app.get('/steam/user/:steamid', async (req, res) => {
         .then(function (response) {
             res.status(200).send(response.data.response.players[0]);
         }).catch(function (error) {
-            // console.log(error);
+            log.console(error);
             if (error.response.status == 404) {
                 return res.status(404).send({
                     message: `User not found, Check the user id. Check http://docs.imxnoobx.xyz/rest-api/handle-errors/#404-not-found`
@@ -177,10 +180,10 @@ app.get('/steam/user/:steamid', async (req, res) => {
 })
 
 app.get('/ip', async (req, res) => {
-    // console.log(' [debug] - Request received at endpoint: ' + req.path)
+    log.console('[debug] - Request received at endpoint: ' + req.path)
     var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
     ip = ip.split(`:`).pop(); // ip = ::ffff:10.10.10.10
-    // console.log(ip) // ip = 10.10.10.10
+    log.console(ip) // ip = 10.10.10.10
     if (!ip) {
         return res.status(404).send({
             message: `Cound't determine your ip. Please Check http://docs.imxnoobx.xyz/rest-api/handle-errors/#404-not-found`
@@ -196,7 +199,13 @@ app.get('/ip', async (req, res) => {
 
 })
 
+app.use(function(req, res, next) {
+    res.status(404).send({
+        message: `Inavlid endpoint. Check http://docs.imxnoobx.xyz/rest-api/handle-errors/#404-not-found`
+    });
+});
+
 app.listen(80, () => {
-    console.log('[debug] - listening on port 80')
+    log.console('[debug] - listening on port 80')
 })
 // https://developer.mozilla.org/es/docs/Web/HTTP/Status
