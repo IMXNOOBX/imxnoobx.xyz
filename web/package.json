@@ -1,27 +1,42 @@
 {
-  "name": "imxnoobx.xyz",
-  "version": "1.0.0",
-  "description": "My personal project imxnoobx.xyz - web",
-  "main": "./index.js",
-  "scripts": {
-    "dev": "nodemon ./index.js",
-    "main": "node ./index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/IMXNOOBX/imxnoobx.xyz.git"
-  },
-  "author": "IMXNOOBX",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/IMXNOOBX/imxnoobx.xyz/issues"
-  },
-  "homepage": "https://github.com/IMXNOOBX/imxnoobx.xyz#readme",
+  "name": "web",
+  "version": "0.5.0",
+  "private": true,
   "dependencies": {
-    "express": "^4.17.3",
-    "fs": "^0.0.1-security"
+    "@react-spring/parallax": "^9.4.5",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^14.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
+    "react-scripts": "5.0.1",
+    "simplebar-react": "^2.4.1",
+    "styled-components": "^5.3.5",
+    "web-vitals": "^2.1.4"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
