@@ -181,9 +181,8 @@ app.get('/steam/user/:steamid', async (req, res) => {
 
 app.get('/ip', async (req, res) => {
     log.console('[debug] - Request received at endpoint: ' + req.path)
-    var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
-    ip = ip.split(`:`).pop(); // ip = ::ffff:10.10.10.10
-    log.console(ip) // ip = 10.10.10.10
+    var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress.split(`:`).pop(); // ip = ::ffff:10.10.10.10
+    // log.console(ip) // ip = 10.10.10.10
     if (!ip) {
         return res.status(404).send({
             message: `Cound't determine your ip. Please Check http://docs.imxnoobx.xyz/rest-api/handle-errors/#404-not-found`
@@ -201,7 +200,7 @@ app.get('/ip', async (req, res) => {
 
 app.use(function(req, res, next) {
     res.status(404).send({
-        message: `Inavlid endpoint. Check http://docs.imxnoobx.xyz/rest-api/handle-errors/#404-not-found`
+        message: `Invalid endpoint. Check http://docs.imxnoobx.xyz/rest-api/handle-errors/#404-not-found`
     });
 });
 
